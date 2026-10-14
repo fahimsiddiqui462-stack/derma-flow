@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /backend/config.php
+Disallow: /backend/schema.sql
+Disallow: /backend/migration_v2.sql
+Disallow: /backend/README.md
