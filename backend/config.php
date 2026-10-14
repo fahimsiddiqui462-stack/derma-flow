@@ -1,9 +1,14 @@
 <?php
-// Copy this file to config.local.php and replace the placeholders for local development.
-const DB_HOST = '127.0.0.1';
-const DB_NAME = 'dermaflow';
-const DB_USER = 'root';
-const DB_PASS = '';
+// Environment overrides for managed hosting (Railway). Falls back to local defaults.
+$host = getenv('MYSQLHOST') ?: '127.0.0.1';
+$name = getenv('MYSQLDATABASE') ?: 'dermaflow';
+$user = getenv('MYSQLUSER') ?: 'root';
+$pass = getenv('MYSQLPASSWORD');
+if ($pass === false) { $pass = ''; }
+define('DB_HOST', $host);
+define('DB_NAME', $name);
+define('DB_USER', $user);
+define('DB_PASS', $pass);
 
 function db(): PDO {
     static $pdo = null;
